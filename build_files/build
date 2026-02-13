@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -ouex pipefail
+
+# Initial update
+apt update -y
+
+# Required repositories & supporting packages
+apt install -y \
+  curl \
+  gpg \
+  lsb-release
+
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings
+rm microsoft.gpg
+
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/$(lsb_release -rs)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/microsoft-ubuntu-$(lsb_release -cs)-prod.list
+apt update -y
+
+# Required packages
+apt install -y microsoft-identity-broker
+apt install -y intune-portal
