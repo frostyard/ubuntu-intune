@@ -18,7 +18,9 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packa
 apt update -y
 
 # Required packages
-apt install -y microsoft-identity-broker
+apt install -y \
+  unattended-upgrades \
+  microsoft-identity-broker
 
 # Intune needs fixes to install properly
 # Install its dependencies first
