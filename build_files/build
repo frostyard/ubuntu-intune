@@ -30,10 +30,6 @@ apt install -y \
   microsoft-identity-broker \
   pipewire-audio-client-libraries
 
-# Update password requirements
-sed -i '/pam_pwquality\.so/c\password requisite         pam_pwquality.so retry=3 dcredit=-1 ocredit=-1 ucredit=-1 lcredit=-1 minlen=12' /etc/pam.d/common-password
-pam-auth-update --force
-
 # Intune needs fixes to install properly
 # Install its dependencies first
 apt-get install -y --no-install-recommends \
@@ -50,6 +46,10 @@ dpkg-deb -b /tmp/intune-unpacked/ /tmp/intune-portal-fixed.deb
 
 # Install patched Intune
 dpkg -i /tmp/intune-portal-fixed.deb
+
+# Update password requirements
+sed -i '/pam_pwquality\.so/c\password requisite         pam_pwquality.so retry=3 dcredit=-1 ocredit=-1 ucredit=-1 lcredit=-1 minlen=12' /etc/pam.d/common-password
+pam-auth-update --force
 
 # Enable automatic updates for more than security patches
 sed -i 's|^//[[:space:]]*"\${distro_id}:\${distro_codename}-updates";|"${distro_id}:${distro_codename}-updates";|' /etc/apt/apt.conf.d/50unattended-upgrades
