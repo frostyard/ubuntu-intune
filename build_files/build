@@ -54,3 +54,5 @@ dpkg -i /tmp/intune-portal-fixed.deb
 # Enable automatic updates for more than security patches
 sed -i 's|^//[[:space:]]*"\${distro_id}:\${distro_codename}-updates";|"${distro_id}:${distro_codename}-updates";|' /etc/apt/apt.conf.d/50unattended-upgrades
 sed -i '/^};/i\    "microsoft-${distro_id}-${distro_codename}-prod:${distro_codename}";' /etc/apt/apt.conf.d/50unattended-upgrades
+
+cat /etc/apt/apt.conf.d/50unattended-upgrades
