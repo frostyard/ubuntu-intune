@@ -1,7 +1,7 @@
 # ubuntu-intune
-Container image meant to simplify the use of [Intune](https://www.microsoft.com/en-us/security/business/microsoft-intune) on [SNOSI](https://github.com/frostyard/snosi)
+Container image for simplifying the use of [Intune](https://www.microsoft.com/en-us/security/business/microsoft-intune) on [SNOW Linux](https://github.com/frostyard/snosi).
 
-Currently, this container is based on Ubuntu 24.04 and includes:
+This container is based on Ubuntu 24.04 and includes:
 * microsoft-identity-broker
 * intune-portal
 * unattended-upgrades
