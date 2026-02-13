@@ -21,9 +21,7 @@ apt update -y
 # Required packages
 apt install -y microsoft-identity-broker
 
-# Install fake systemctl temporarily to prevent intune-portal postinst failures
-# intune-portal's postinst script tries to run systemctl commands which fail in containers
+# Install Intune with fake systemctl to prevent intune-portal postinst failures
 install -m 755 /ctx/fake-systemctl /usr/bin/systemctl
 apt install -y intune-portal
-# Remove fake systemctl after installation
 rm -f /usr/bin/systemctl
