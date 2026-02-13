@@ -32,7 +32,7 @@ dpkg-deb -R /tmp/intune-portal_*.deb /tmp/intune-unpacked/
 
 # Remove the postinst step that causes it to break when installing inside the container
 sed -i '/systemctl restart polkit\.service 2>\/dev\/null/d' /tmp/intune-unpacked/DEBIAN/postinst
-dpkg-deb -b /tmp/intune-unpacked/ /tmp/intune-portal_fixed.deb
+dpkg-deb -b /tmp/intune-unpacked/ /tmp/intune-portal-fixed.deb
 
 # Install patched Intune
-dpkg -i /tmp/intune-portal_fixed.deb
+dpkg -i /tmp/intune-portal-fixed.deb
