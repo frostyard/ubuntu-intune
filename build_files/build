@@ -21,11 +21,18 @@ apt update -y
 apt install -y microsoft-identity-broker
 
 # Intune needs fixes to install properly
+# Install its dependencies first
 apt-get install -y --no-install-recommends \
     $(apt-cache depends intune-portal | awk '/Depends:/{print $2}')
+
+# Download and extract the Intune package
 apt download intune-portal
 mv intune-portal_*.deb /tmp/
 dpkg-deb -R /tmp/intune-portal_*.deb /tmp/intune-unpacked/
+
+# Remove the postinst step that causes it to break when installing inside the container
 sed -i '/systemctl restart polkit\.service 2>\/dev\/null/d' /tmp/intune-unpacked/DEBIAN/postinst
 dpkg-deb -b /tmp/intune-unpacked/ /tmp/intune-portal_fixed.deb
+
+# Install patched Intune
 dpkg -i /tmp/intune-portal_fixed.deb
