@@ -17,6 +17,13 @@ rm microsoft.gpg
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/$(lsb_release -rs)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/microsoft-ubuntu-$(lsb_release -cs)-prod.list
 apt update -y
 
+# Remove no longer needed packages
+apt remove -y \
+  curl \
+  gpg \
+  lsb-release
+apt autoremove -y
+
 # Required packages
 apt install -y \
   unattended-upgrades \
