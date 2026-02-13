@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -ouex pipefail
 
 # Initial update
@@ -20,4 +19,13 @@ apt update -y
 
 # Required packages
 apt install -y microsoft-identity-broker
-apt install -y intune-portal
+
+# Intune needs fixes to install properly
+apt-get install -y --no-install-recommends \
+    $(apt-cache depends intune-portal | awk '/Depends:/{print $2}')
+apt download intune-portal
+mv intune-portal_*.deb /tmp/
+dpkg-deb -R /tmp/intune-portal_*.deb /tmp/intune-unpacked/
+sed -i '/systemctl restart polkit\.service 2>\/dev\/null/d' /tmp/intune-unpacked/DEBIAN/postinst
+dpkg-deb -b /tmp/intune-unpacked/ /tmp/intune-portal_fixed.deb
+dpkg -i /tmp/intune-portal_fixed.deb
