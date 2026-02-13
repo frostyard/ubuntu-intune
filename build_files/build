@@ -45,3 +45,6 @@ dpkg-deb -b /tmp/intune-unpacked/ /tmp/intune-portal-fixed.deb
 
 # Install patched Intune
 dpkg -i /tmp/intune-portal-fixed.deb
+
+# Update password requirements
+pam-auth-update
