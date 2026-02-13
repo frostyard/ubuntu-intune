@@ -1,0 +1,4 @@
+#!/bin/bash
+# Fake systemctl for container builds
+# This prevents package installation scripts from failing when systemd is not available
+exit 0
