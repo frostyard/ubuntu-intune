@@ -59,7 +59,6 @@ dpkg-deb -b /tmp/intune-unpacked/ /tmp/intune-portal-fixed.deb
 dpkg -i /tmp/intune-portal-fixed.deb
 
 # Update password requirements
-sed -i '/pam_pwquality\.so/c\password requisite         pam_pwquality.so retry=3 dcredit=-1 ocredit=-1 ucredit=-1 lcredit=-1 minlen=12' /etc/pam.d/common-password
 pam-auth-update --force
 
 # Enable automatic updates for more than security patches
