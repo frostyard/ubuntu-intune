@@ -29,7 +29,12 @@ apt install -y \
   unattended-upgrades \
   microsoft-identity-broker \
   pipewire-audio-client-libraries \
-  xdg-desktop-portal-gtk
+  xdg-desktop-portal-gtk \
+  pcscd \
+  yubikey-manager \
+  opensc \
+  libnss3-tools \
+  openssl
 
 # Intune needs fixes to install properly
 # Install its dependencies first
