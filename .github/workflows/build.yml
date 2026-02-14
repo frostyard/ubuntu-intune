@@ -145,4 +145,4 @@ jobs:
         env:
           TAGS: ${{ steps.push.outputs.digest }}
           COSIGN_EXPERIMENTAL: false
-          COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
+          COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_KEY }}
