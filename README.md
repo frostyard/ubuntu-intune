@@ -5,8 +5,10 @@ Visit [intuneme](https://github.com/frostyard/intuneme) for a helpful CLI that m
 
 This container is based on Ubuntu 24.04 LTS and includes:
 * microsoft-identity-broker
+* microsoft-edge-stable
 * intune-portal
 * unattended-upgrades
+* Supporting packages for Yubikeys
 * Required PAM & security.d changes
 
 Container images uploaded to the GHCR are signed with [cosign](https://github.com/sigstore/cosign) and can be validated with the `cosign.pub` file found in the root of this repository using:
