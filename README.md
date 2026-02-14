@@ -1,6 +1,8 @@
 # ubuntu-intune
 Container image for simplifying the use of [Intune](https://www.microsoft.com/en-us/security/business/microsoft-intune) on [SNOW Linux](https://github.com/frostyard/snosi) and other Linux distros with secure boot and full disk encryption.
 
+Visit [intuneme](https://github.com/frostyard/intuneme) for a helpful CLI that makes use of this container.
+
 This container is based on Ubuntu 24.04 LTS and includes:
 * microsoft-identity-broker
 * intune-portal
