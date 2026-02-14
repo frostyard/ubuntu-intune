@@ -37,7 +37,9 @@ apt install -y \
   opensc \
   libnss3-tools \
   openssl \
-  libsecret-tools
+  libsecret-tools \
+  libpulse0 \
+  sudo
 
 # Intune needs fixes to install properly
 # Install its dependencies first
