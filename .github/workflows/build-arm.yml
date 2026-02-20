@@ -1,4 +1,4 @@
-name: Build container image
+name: Build container image (aarch64)
 on:
   repository_dispatch:
     types:
@@ -29,8 +29,9 @@ concurrency:
 
 jobs:
   build_push:
-    name: Build and push image (x86_64)
-    runs-on: ubuntu-24.04
+    name: Build and push image (aarch64)
+    runs-on: 
+      - ubuntu-24.04-arm
 
     permissions:
       contents: read
